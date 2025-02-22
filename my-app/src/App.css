@@ -1,5 +1,43 @@
 .App {
-  text-align: center;
+  display: inline-flex;
+padding: 0.921rem 1.228rem;
+flex-direction: column;
+align-items: center;
+}
+
+.top {
+  display: flex;
+align-items: flex-start;
+gap: 8.3125rem;
+}
+
+.left {
+  min-width: 18.75rem;
+  flex: 1 0 0;
+}
+
+.middle {
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 13.5625rem;
+}
+
+.right {
+  width: 40.375rem;
+height: 63.0625rem;
+}
+
+.upgrade {
+  display: flex;
+width: 40.375rem;
+height: 9.6875rem;
+padding: 0.625rem;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 0.625rem;
+flex-shrink: 0;
 }
 
 .App-logo {
