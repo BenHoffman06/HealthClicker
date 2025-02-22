@@ -1,14 +1,14 @@
 .App {
   display: inline-flex;
-padding: 0.921rem 1.228rem;
-flex-direction: column;
-align-items: center;
+  padding: 0.921rem 1.228rem;
+  flex-direction: column;
+  align-items: center;
 }
 
 .top {
   display: flex;
-align-items: flex-start;
-gap: 8.3125rem;
+  align-items: flex-start;
+  gap: 8.3125rem;
 }
 
 .left {
@@ -18,59 +18,70 @@ gap: 8.3125rem;
 
 .middle {
   display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 13.5625rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13.5625rem;
 }
 
 .right {
   width: 40.375rem;
-height: 63.0625rem;
+  height: 63.0625rem;
+
+  background: #f1ebeb;
 }
 
 .upgrade {
   display: flex;
-width: 40.375rem;
-height: 9.6875rem;
-padding: 0.625rem;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-gap: 0.625rem;
-flex-shrink: 0;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+  width: 40.375rem;
+  height: 9.6875rem;
+  padding: 0.625rem;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
+  gap: 0.625rem;
+  flex-shrink: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.upgrade > .title {
+  color: #000;
+  text-align: center;
+  font-size: 1.61175rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  margin-block-start: 0px;
+  margin-block-end: 0px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.upgrade > .description {
+  color: #000;
+  text-align: center;
+  font-size: 0.84425rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
+.upgrade > .price {
+  color: #000;
+  text-align: center;
+  font-size: 0.84425rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
+h1 {
+  color: #000;
+font-size: 1.61175rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }

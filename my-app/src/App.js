@@ -4,12 +4,15 @@ import './App.css';
 import Callback from './Callback';
 import Home from './Home'; // Ensure this component exists
 import StravaActivities from './StravaActivities'; // Ensure this component exists
+import Upgrade from './Upgrade';
+
+import heartImage from './/images/heart.jpg';
 
 function App() {
   const redirectToStrava = () => {
     const clientId = "149755"; 
     const redirectUri = "http://localhost:3000/callback"; // Must match your Strava settings
-    const scope = "activity:read"; // Permission to read activities
+    const scope = "activity:read_all"; // Permission to read activities
     const responseType = "code"; // Required for OAuth
   
     const authUrl = `https://www.strava.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
@@ -26,37 +29,24 @@ function App() {
         <div className="center">
           <h2>Heartbeats: <span id="hb-counter"></span></h2> 
           <h2>Beats per second: <span id="bps-counter"></span></h2> 
+          <img src={heartImage} alt="Heart" /> 
+        </div>
+        <div className="right">
+          <h1>Upgrades</h1>
+          <Upgrade></Upgrade>
+          <Upgrade></Upgrade>
+          <Upgrade></Upgrade>
+          <Upgrade></Upgrade>
+          <Upgrade></Upgrade>
         </div>
       </div>
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/callback" element={<Callback />} />
         <Route path="/activities" element={<StravaActivities />} />
       </Routes>
       <StravaActivities></StravaActivities>
-      {/* <div className="right">
-        <h2>Upgrades</h2>
-        <div className="upgrade">
-          <h3>AutoStepper</h3>
-          <p>Description</p>
-          <p className="light">Price</p>
-        </div>
-        <div className="upgrade">
-          <h3>AutoStepper</h3>
-          <p>Description</p>
-          <p className="light">Price</p>
-        </div>
-        <div className="upgrade">
-          <h3>AutoStepper</h3>
-          <p>Description</p>
-          <p className="light">Price</p>
-        </div>
-        <div className="upgrade">
-          <h3>AutoStepper</h3>
-          <p>Description</p>
-          <p className="light">Price</p>
-        </div>
-      </div> */}
       <button onClick={redirectToStrava}>Connect to Strava</button>
     </div>
   );
