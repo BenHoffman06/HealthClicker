@@ -6,16 +6,8 @@ import Home from './Home'; // Ensure this component exists
 import StravaActivities from './StravaActivities'; // Ensure this component exists
 import Upgrade from './Upgrade';
 
-import heartImage from './/images/heart.jpg';
-import stepperImg from './/images/stepper.jpg';
-import situpsImg from './/images/situps.jpg';
-import pushupsImg from './/images/pushups.jpg';
-import sprintingImg from './/images/sprinting.jpg';
-import squatsImg from './/images/squats.jpg';
-import planksImg from './/images/plank.png';
-
-import HeartClicker from './HeartClicker';
-import Logo from './Logo';
+import heartImage from './images/heart.jpg';
+import Logo from './routes/logo';
 
 function App() {
   const redirectToStrava = () => {
@@ -31,16 +23,26 @@ function App() {
 
   return (
     <div className="App">
+      <Logo />
       <div className='top'>
-        <Logo></Logo>
         <div className="center">
-          <HeartClicker></HeartClicker>
+          <h2>Heartbeats: <span id="hb-counter"></span></h2> 
+          <h2>Beats per second: <span id="bps-counter"></span></h2> 
+          <img src={heartImage} alt="Heart" /> 
+        </div>
+        <div className="right">
+          <h1>Upgrades</h1>
+          <Upgrade></Upgrade>
+          <Upgrade></Upgrade>
+          <Upgrade></Upgrade>
+          <Upgrade></Upgrade>
+          <Upgrade></Upgrade>
         </div>
       </div>
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/" element={<Logo />} />
+        <Route path="/logo" element={<Logo />} />
         <Route path="/callback" element={<Callback />} />
         <Route path="/activities" element={<StravaActivities />} />
       </Routes>

@@ -1,0 +1,39 @@
+.logo-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    
+}
+.logo-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.rainbow-text {
+    background: linear-gradient(90deg, red, orange);
+    background-size: 400% 100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: rainbow 10s linear infinite;
+    font-weight: bold;
+    /* Optional: making text bold */
+    font-size: 25px;
+    /* Optional: increasing text size */
+    text-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
