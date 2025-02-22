@@ -6,15 +6,8 @@ import Home from './Home'; // Ensure this component exists
 import StravaActivities from './StravaActivities'; // Ensure this component exists
 import Upgrade from './Upgrade';
 
-import heartImage from './/images/heart.jpg';
-import stepperImg from './/images/stepper.jpg';
-import situpsImg from './/images/situps.jpg';
-import pushupsImg from './/images/pushups.jpg';
-import sprintingImg from './/images/sprinting.jpg';
-import squatsImg from './/images/squats.jpg';
-import planksImg from './/images/plank.png';
-
 import HeartClicker from './HeartClicker';
+
 import Logo from './Logo';
 
 function App() {
