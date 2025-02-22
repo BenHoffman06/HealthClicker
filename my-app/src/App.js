@@ -41,7 +41,7 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path"/" element={<Logo />} />
+        <Route path="/" element={<Logo />} />
         <Route path="/callback" element={<Callback />} />
         <Route path="/activities" element={<StravaActivities />} />
       </Routes>
