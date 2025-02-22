@@ -32,7 +32,6 @@
 
 .upgrade {
   display: flex;
-  width: 40.375rem;
   height: 9.6875rem;
   padding: 0.625rem;
   flex-direction: column;
@@ -85,3 +84,55 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 }
+
+.upgrade-container {
+  display: inline-flex;
+align-items: center;
+gap: 1rem;
+}
+
+.upgrade-container > img {
+  width: 6.6875rem;
+height: 6.6875rem;
+aspect-ratio: 1/1;
+}
+
+/* region */
+.logo-container {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  
+}
+.logo-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.rainbow-text {
+  background: linear-gradient(90deg, red, orange);
+  background-size: 400% 100%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: rainbow 10s linear infinite;
+  font-weight: bold;
+  font-size: 25px;
+  text-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+}
+
+@keyframes rainbow {
+  0% {
+      background-position: 0 50%;
+  }
+
+  50% {
+      background-position: 100% 50%;
+  }
+
+  100% {
+      background-position: 0 50%;
+  }
+}
+/* endregion */

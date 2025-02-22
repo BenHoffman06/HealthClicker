@@ -7,6 +7,15 @@ import StravaActivities from './StravaActivities'; // Ensure this component exis
 import Upgrade from './Upgrade';
 
 import heartImage from './/images/heart.jpg';
+import stepperImg from './/images/stepper.jpg';
+import situpsImg from './/images/situps.jpg';
+import pushupsImg from './/images/pushups.jpg';
+import sprintingImg from './/images/sprinting.jpg';
+import squatsImg from './/images/squats.jpg';
+import planksImg from './/images/plank.png';
+
+import HeartClicker from './HeartClicker';
+import Logo from './Logo';
 
 function App() {
   const redirectToStrava = () => {
@@ -23,21 +32,9 @@ function App() {
   return (
     <div className="App">
       <div className='top'>
-        <div className="left">
-          <h1>Health Clicker</h1>
-        </div>
+        <Logo></Logo>
         <div className="center">
-          <h2>Heartbeats: <span id="hb-counter"></span></h2> 
-          <h2>Beats per second: <span id="bps-counter"></span></h2> 
-          <img src={heartImage} alt="Heart" /> 
-        </div>
-        <div className="right">
-          <h1>Upgrades</h1>
-          <Upgrade></Upgrade>
-          <Upgrade></Upgrade>
-          <Upgrade></Upgrade>
-          <Upgrade></Upgrade>
-          <Upgrade></Upgrade>
+          <HeartClicker></HeartClicker>
         </div>
       </div>
       
