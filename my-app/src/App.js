@@ -7,6 +7,7 @@ import StravaActivities from './StravaActivities'; // Ensure this component exis
 import Upgrade from './Upgrade';
 
 import heartImage from './/images/heart.jpg';
+import Logo from './routes/logo'
 
 function App() {
   const redirectToStrava = () => {
@@ -23,9 +24,6 @@ function App() {
   return (
     <div className="App">
       <div className='top'>
-        <div className="left">
-          <h1>Health Clicker</h1>
-        </div>
         <div className="center">
           <h2>Heartbeats: <span id="hb-counter"></span></h2> 
           <h2>Beats per second: <span id="bps-counter"></span></h2> 
@@ -43,6 +41,7 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path"/" element={<Logo />} />
         <Route path="/callback" element={<Callback />} />
         <Route path="/activities" element={<StravaActivities />} />
       </Routes>
