@@ -1,0 +1,130 @@
+.logo-container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #1a1a1a;
+    box-shadow: 0 2px 4px rgb(255, 253, 253);
+    z-index: 1;
+  }
+  
+  .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .logo-text {
+    background: linear-gradient(90deg, red, orange);
+    background-size: 400% 100%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: rainbow 10s linear infinite;
+    font-weight: bold;
+    font-size: 25px;
+    text-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+  }
+  @keyframes rainbow {
+    0% {
+        background-position: 0 50%;
+    }
+  
+    50% {
+        background-position: 100% 50%;
+    }
+  
+    100% {
+        background-position: 0 50%;
+    }
+    }
+  
+  .strava-button {
+    background-color: #fc4c02;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .strava-button:hover {
+    background-color: #fc6c32;
+  }
+  
+  /* Add padding to main content to prevent it from being hidden under the fixed header */
+  .main-content {
+    padding-top: 60px;
+  }
+
+/* Add to your App.css or logo.css */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+  }
+  
+  body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .dark body {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .dark .logo-container {
+    background-color: #222;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+  
+  .theme-icon {
+    width: 24px;
+    height: 24px;
+    color: white;
+    transition: transform 0.3s ease;
+  }
+  
+  .theme-toggle:hover .theme-icon {
+    transform: scale(1.1);
+  }
+  
+  /* Remove these styles since they're no longer needed */
+  .header-content {
+    padding: 0; /* Remove the padding since your original CSS already handles spacing */
+  }
+  
+  .gap-4 {
+    gap: 1rem;
+  }

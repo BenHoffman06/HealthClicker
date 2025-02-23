@@ -96,18 +96,15 @@ function HeartClicker() {
     };
 
     return (
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start", padding: "20px" }}>
+        <div className="relative min-h-screen">
             {/* Left Section - Heart Counter & Clicker */}
-            <div style={{ textAlign: "center", flex: 1 }}>
+            <div className="p-8 main-content">
                 <h1>❤️ Heartbeats: {heartbeats.toFixed(0)}</h1>
                 <h2>📏 Real-Life Distance: {realLifeDistance} km</h2>
                 <img
                     src={multiplierActive ? goldHeartImage : normalHeartImage}
                     alt="Heart"
-                    onClick={() => {
-                        setHeartbeats(prev => prev + 1 * (multiplierActive ? 2 : 1));
-                    }}
-                    
+                    onClick={() => setHeartbeats(prev => prev + 1)}
                     style={{
                         width: "150px",
                         height: "150px",
@@ -117,17 +114,8 @@ function HeartClicker() {
                     onMouseDown={(e) => e.target.style.transform = "scale(0.9)"}
                     onMouseUp={(e) => e.target.style.transform = "scale(1)"}
                 />
-
                 {multiplierActive && <h3 style={{ color: "gold" }}>🔥 2X Multiplier Active!</h3>}
-
                 <h2>Welcome to Health Clicker</h2>
-                {!accessToken ? (
-                    <button onClick={connectToStrava}>
-                        🔗 Connect to Strava
-                    </button>
-                ) : (
-                    <p>✅ Connected to Strava</p>
-                )}
                 <NewFeatures
                     heartbeats={heartbeats}
                     setHeartbeats={setHeartbeats}
@@ -136,19 +124,27 @@ function HeartClicker() {
                 />
             </div>
 
-            {/* Right Section - Upgrades */}
-            <div style={{ flex: 1, maxWidth: "600px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-                <h2 style={{ gridColumn: "span 2", textAlign: "center" }}>Upgrades</h2>
-                {Object.keys(upgrades).map(upgrade => (
-                    <div key={upgrade} style={{ textAlign: "left", borderBottom: "1px solid #ddd", paddingBottom: "10px" }}>
-                        <h3>{baseUpgradeCosts[upgrade].icon} {upgrade.charAt(0).toUpperCase() + upgrade.slice(1)}</h3>
-                        <p style={{ fontStyle: "italic" }}>Owned: {upgrades[upgrade]}</p>
-                        <p style={{ fontStyle: "italic" }}>Beats per Second: {(baseUpgradeCosts[upgrade].bps * upgrades[upgrade]).toFixed(1)}</p>
-                        <p style={{ fontStyle: "italic" }}>Cost to Unlock: {getUpgradeCost(upgrade).toFixed(0)} beats</p>
-                        <p style={{ fontStyle: "italic" }}>Required Distance: {baseUpgradeCosts[upgrade].km} km</p>
-                        <button onClick={() => buyUpgrade(upgrade)}>Buy</button>
-                    </div>
-                ))}
+            {/* Fixed right section with 2-column upgrade grid */}
+            <div className="fixed-upgrades">
+                <h2>Upgrades</h2>
+                <div className="upgrades-grid">
+                    {Object.keys(upgrades).map(upgrade => (
+                        <div key={upgrade} className="upgrade-card">
+                            <h3>{baseUpgradeCosts[upgrade].icon} {upgrade.charAt(0).toUpperCase() + upgrade.slice(1)}</h3>
+                            <p>Owned: {upgrades[upgrade]}</p>
+                            <p>Beats per Second: {(baseUpgradeCosts[upgrade].bps * upgrades[upgrade]).toFixed(1)}</p>
+                            <p>Cost to Unlock: {getUpgradeCost(upgrade).toFixed(0)} beats</p>
+                            <p>Required Distance: {baseUpgradeCosts[upgrade].km} km</p>
+                            <button 
+                                className="buy-button"
+                                onClick={() => buyUpgrade(upgrade)}
+                                disabled={heartbeats < getUpgradeCost(upgrade) || realLifeDistance < baseUpgradeCosts[upgrade].km}
+                            >
+                                Buy
+                            </button>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

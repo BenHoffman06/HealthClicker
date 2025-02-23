@@ -1,44 +1,53 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom'; // Import Routes and Route
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Callback from './Callback';
-import Home from './Home'; // Ensure this component exists
-import StravaActivities from './StravaActivities'; // Ensure this component exists
-import Upgrade from './Upgrade';
-
+import Home from './Home';
+import StravaActivities from './StravaActivities';
 import HeartClicker from './HeartClicker';
-
-import Logo from './Logo';
+import Logo from './routes/logo';
+import ThemeToggle from './components/ThemeToggle'; // You'll need to create this file
 
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.body.style.backgroundColor = newTheme === "dark" ? "#333" : "#fff";
+    document.body.style.color = newTheme === "dark" ? "#fff" : "#000";
+    document.documentElement.classList.toggle("dark");
+  };
+
   const redirectToStrava = () => {
-    const clientId = "149755"; 
-    const redirectUri = "http://localhost:3000/callback"; // Must match your Strava settings
-    const scope = "activity:read_all"; // Permission to read activities
-    const responseType = "code"; // Required for OAuth
-  
+    const clientId = "149755";
+    const redirectUri = "http://localhost:3000/callback";
+    const scope = "activity:read_all";
+    const responseType = "code";
+    
     const authUrl = `https://www.strava.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
-  
-    window.location.href = authUrl; // Redirect the user
+    
+    window.location.href = authUrl;
   };
 
   return (
-    <div className="App">
+    <div className={`App ${theme}`}>
       <div className='top'>
-        <Logo></Logo>
+        <Logo 
+          redirectToStrava={redirectToStrava} 
+          theme={theme} 
+          toggleTheme={toggleTheme}
+        />
         <div className="center">
-          <HeartClicker></HeartClicker>
+          <HeartClicker />
         </div>
       </div>
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/" element={<Logo />} />
         <Route path="/callback" element={<Callback />} />
         <Route path="/activities" element={<StravaActivities />} />
       </Routes>
-      <StravaActivities></StravaActivities>
-      <button onClick={redirectToStrava}>Connect to Strava</button>
     </div>
   );
 }
