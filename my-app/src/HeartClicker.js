@@ -134,14 +134,7 @@ function HeartClicker() {
                 />
 
                 {multiplierActive && <h3 style={{ color: "gold" }}>🔥 2X Multiplier Active!</h3>}
-
-                {!accessToken ? (
-                    <button onClick={connectToStrava}>
-                        🔗 Connect to Strava
-                    </button>
-                ) : (
-                    <p>✅ Connected to Strava</p>
-                )}
+x
                 <NewFeatures
                     heartbeats={heartbeats}
                     setHeartbeats={setHeartbeats}
