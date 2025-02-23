@@ -1,138 +1,42 @@
-.App {
-  display: inline-flex;
-  padding: 0.921rem 1.228rem;
-  flex-direction: column;
-  align-items: center;
-}
-
-.top {
-  display: flex;
-  align-items: flex-start;
-  gap: 8.3125rem;
-}
-
-.left {
-  min-width: 18.75rem;
-  flex: 1 0 0;
-}
-
-.middle {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 13.5625rem;
-}
-
-.right {
-  width: 40.375rem;
-  height: 63.0625rem;
-
-  background: #f1ebeb;
-}
-
-.upgrade {
-  display: flex;
-  height: 9.6875rem;
-  padding: 0.625rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 0.625rem;
-  flex-shrink: 0;
-}
-
-.upgrade > .title {
-  color: #000;
-  text-align: center;
-  font-size: 1.61175rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-
-  margin-block-start: 0px;
-  margin-block-end: 0px;
-}
-
-.upgrade > .description {
-  color: #000;
-  text-align: center;
-  font-size: 0.84425rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-
-  margin-block-start: 0px;
-  margin-block-end: 0px;
-}
-
-.upgrade > .price {
-  color: #000;
-  text-align: center;
-  font-size: 0.84425rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-
-  margin-block-start: 0px;
-  margin-block-end: 0px;
-}
-
-h1 {
-  color: #000;
-font-size: 1.61175rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
-
-.upgrade-container {
-  display: inline-flex;
-align-items: center;
-gap: 1rem;
-}
-
-.upgrade-container > img {
-  width: 6.6875rem;
-height: 6.6875rem;
-aspect-ratio: 1/1;
-}
-
-/* region */
-.logo-container {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  
-}
-.logo-wrapper {
-  max-width: 1200px;
+#root {
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem;
+  text-align: center;
 }
 
-.rainbow-text {
-  background: linear-gradient(90deg, red, orange);
-  background-size: 400% 100%;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: rainbow 10s linear infinite;
-  font-weight: bold;
-  font-size: 25px;
-  text-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes rainbow {
-  0% {
-      background-position: 0 50%;
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-
-  50% {
-      background-position: 100% 50%;
-  }
-
-  100% {
-      background-position: 0 50%;
+  to {
+    transform: rotate(360deg);
   }
 }
-/* endregion */
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
