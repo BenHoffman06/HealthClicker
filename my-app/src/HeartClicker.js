@@ -134,7 +134,7 @@ function HeartClicker() {
                 />
 
                 {multiplierActive && <h3 style={{ color: "gold" }}>🔥 2X Multiplier Active!</h3>}
-x
+
                 <NewFeatures
                     heartbeats={heartbeats}
                     setHeartbeats={setHeartbeats}
