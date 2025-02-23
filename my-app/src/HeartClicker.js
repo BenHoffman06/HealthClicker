@@ -104,7 +104,10 @@ function HeartClicker() {
                 <img
                     src={multiplierActive ? goldHeartImage : normalHeartImage}
                     alt="Heart"
-                    onClick={() => setHeartbeats(prev => prev + 1)}
+                    onClick={() => {
+                        setHeartbeats(prev => prev + 1 * (multiplierActive ? 2 : 1));
+                    }}
+                    
                     style={{
                         width: "150px",
                         height: "150px",
