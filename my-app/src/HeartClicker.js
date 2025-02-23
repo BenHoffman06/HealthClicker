@@ -18,6 +18,10 @@ function HeartClicker() {
         planks: 0,
         sprints: 0,
     });
+    const [multiplier, setMultiplier] = useState(1);
+    const [multiplierActive, setMultiplierActive] = useState(false);
+    const [isGoldenHeartActive, setIsGoldenHeartActive] = useState(false); // New state variable
+
     const baseUpgradeCosts = {
         autoStepper: { beats: 15, km: 1, bps: 0.1, icon: "🚶" },
         situps: { beats: 100, km: 5, bps: 0.5, icon: "🤸" },
@@ -29,6 +33,12 @@ function HeartClicker() {
 
     function getUpgradeCost(upgrade) {
         return Math.ceil(baseUpgradeCosts[upgrade].beats * (1.15 ** upgrades[upgrade]));
+    }
+
+    function getTotalBPS() {
+        return Object.keys(upgrades).reduce((total, upgrade) => {
+            return total + (upgrades[upgrade] * baseUpgradeCosts[upgrade].bps);
+        }, 0);
     }
 
     useEffect(() => {
@@ -87,24 +97,32 @@ function HeartClicker() {
         }
     }
 
-    const [multiplier, setMultiplier] = useState(1);
-    const [multiplierActive, setMultiplierActive] = useState(false);
-
-    // Function to toggle multiplier and expose it to the global scope
-    window.toggleGoldHeart = () => {
-        setMultiplierActive(prev => !prev);
+    // Function to toggle golden heart
+    const toggleGoldenHeart = () => {
+        setIsGoldenHeartActive(prev => !prev);
     };
 
+    // Expose functions globally for testing
+    window.toggleGoldHeart = toggleGoldenHeart;
+    window.setHeartbeats = setHeartbeats;
+    window.setRealLifeDistance = setRealLifeDistance;
+    window.setUpgrades = setUpgrades;
+    window.setMultiplier = setMultiplier;
+    window.getTotalBPS = getTotalBPS;
+
     return (
-        <div className="relative min-h-screen">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start", padding: "20px" }}>
             {/* Left Section - Heart Counter & Clicker */}
-            <div className="p-8 main-content">
-                <h1>❤️ Heartbeats: {heartbeats.toFixed(0)}</h1>
-                <h2>📏 Real-Life Distance: {realLifeDistance} km</h2>
+            <div style={{ textAlign: "center", flex: 1 }}>
+                <h1 className="purple">❤️ Heartbeats: {heartbeats.toFixed(0)}</h1>
+                <h2 className="purple">📏 Distance Multiplier: {realLifeDistance} km</h2>
+
                 <img
-                    src={multiplierActive ? goldHeartImage : normalHeartImage}
+                    src={isGoldenHeartActive ? goldHeartImage : normalHeartImage} // Change image based on state
                     alt="Heart"
-                    onClick={() => setHeartbeats(prev => prev + 1)}
+                    onClick={() => {
+                        setHeartbeats(prev => prev + 1 * (multiplierActive ? 2 : 1));
+                    }}
                     style={{
                         width: "150px",
                         height: "150px",
@@ -114,13 +132,23 @@ function HeartClicker() {
                     onMouseDown={(e) => e.target.style.transform = "scale(0.9)"}
                     onMouseUp={(e) => e.target.style.transform = "scale(1)"}
                 />
+
                 {multiplierActive && <h3 style={{ color: "gold" }}>🔥 2X Multiplier Active!</h3>}
-                <h2>Welcome to Health Clicker</h2>
+
+                {!accessToken ? (
+                    <button onClick={connectToStrava}>
+                        🔗 Connect to Strava
+                    </button>
+                ) : (
+                    <p>✅ Connected to Strava</p>
+                )}
                 <NewFeatures
                     heartbeats={heartbeats}
                     setHeartbeats={setHeartbeats}
+                    getTotalBPS={getTotalBPS}
                     setMultiplier={setMultiplier}
                     multiplierActive={multiplierActive}
+                    accessToken={accessToken}
                 />
             </div>
 

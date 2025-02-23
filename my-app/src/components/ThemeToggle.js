@@ -15,6 +15,7 @@ const ThemeToggle = ({ theme, toggleTheme }) => {
         <Sun className="theme-icon" />
       )}
     </button>
+
   );
 };
 

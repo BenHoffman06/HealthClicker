@@ -44,7 +44,6 @@ function App() {
       </div>
       
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/callback" element={<Callback />} />
         <Route path="/activities" element={<StravaActivities />} />
       </Routes>

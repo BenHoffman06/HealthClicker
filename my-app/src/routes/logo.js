@@ -1,7 +1,8 @@
 // src/routes/logo.js
 import React from 'react';
 import './logo.css';
-import ThemeToggle from '../components/ThemeToggle';
+import { Sun, Moon } from 'lucide-react';
+
 
 const Logo = ({ redirectToStrava, theme, toggleTheme }) => {
   return (
@@ -12,7 +13,18 @@ const Logo = ({ redirectToStrava, theme, toggleTheme }) => {
             Health Clicker
           </div>
           <div className="flex items-center gap-4">
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            
+          <button
+      onClick={toggleTheme}
+      className="theme-toggle"
+      aria-label="Toggle theme"
+    >
+      {theme === "light" ? (
+        <Moon className="theme-icon" />
+      ) : (
+        <Sun className="theme-icon" />
+      )}
+    </button>
             <button 
               onClick={redirectToStrava}
               className="strava-button"
